@@ -10,9 +10,26 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between; /* Adjusts spacing */
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 40px; /* Reduce padding to bring links closer */
+    padding: 15px 40px;
+    background-color: rgba(3, 36, 71, 0.9); /* Slightly transparent for better visibility */
+    position: fixed; /* Keep navbar at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+}
+
+/* Hide Navbar when scrolling down */
+.navbar.hidden {
+    transform: translateY(-100%);
+}
+
+/* Add space below navbar */
+body {
+    padding-top: 70px; /* Adjust based on navbar height */
 }
 
 .logo {
@@ -30,6 +47,7 @@ body {
     list-style: none;
     display: flex;
     gap: 20px;
+    margin-right: 20px;
 }
 
 .nav-links li {
@@ -41,10 +59,16 @@ body {
     text-decoration: none;
     font-size: 16px;
     transition: 0.3s;
+    padding: 10px 15px; /* Add padding to prevent overlap */
 }
 
 .nav-links a:hover {
     color: #1ce2e4;
+}
+
+/* Ensure Contact Button is Clickable */
+.nav-links li:last-child {
+    margin-right: 10px; /* Add space to the right */
 }
 
 /* Profile Container */
@@ -54,7 +78,7 @@ body {
     justify-content: center;
     max-width: 900px;
     margin: 120px auto;
-    background-color: #032447; /* Slightly Lighter Dark Blue */
+    background-color: #032447;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -168,87 +192,20 @@ body {
     opacity: 0.8;
 }
 
-/* About Section (Maintaining Consistency) */
+/* About Section */
 .about-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 50vh; /* Same height for consistency */
+    min-height: 50vh;
     background-color: #032447;
     border-radius: 10px;
     padding: 30px;
-    max-width: 900px; /* Matches project containers */
+    max-width: 900px;
     margin: 50px auto;
     text-align: center;
     color: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Projects Section */
-.projects-container {
-    max-width: 900px; /* Matches about-container width */
-    margin: 50px auto;
-    padding: 30px;
-    background-color: #042c56;
-    border-radius: 10px;
-    color: white;
-    text-align: center;
-}
-
-/* Project List */
-.project-list {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Project Card (Thumbnail Left, Details Right) */
-.project-card {
-    display: flex;
-    align-items: center;
-    background-color: #05467a;
-    border-radius: 10px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: left;
-    gap: 15px;
-    width: 900px; /* Matches about-container */
-    min-height: 50vh; /* Matches about-container */
-    margin: 0 auto; /* Centering */
-    animation: popOut 0.6s ease-out;
-}
-
-/* Thumbnail Image */
-.project-image {
-    width: 40%;
-    max-width: 250px;
-    border-radius: 8px;
-}
-
-/* Project Details */
-.project-details {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-/* GitHub Button at Bottom Right */
-.github-link {
-    align-self: flex-end;
-    display: inline-block;
-    margin-top: 10px;
-    padding: 8px 16px;
-    background-color: #1e90ff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: background 0.3s ease;
-}
-
-.github-link:hover {
-    background-color: #1479d3;
 }
 
 /* Resume Section */
@@ -260,8 +217,8 @@ body {
 
 /* Resume Preview Image */
 .resume-preview img {
-    width: 100%; /* Adjust width as needed */
-    max-width: 600px; /* Prevents the image from being too large */
+    width: 100%;
+    max-width: 600px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -302,7 +259,7 @@ body {
     animation: popOut 0.6s ease-out;
 }
 
-/* Define Light and Dark Mode using CSS Variables */
+/* Light and Dark Mode */
 :root {
     --bg-color: #0a192f;
     --text-color: #ffffff;
@@ -343,4 +300,58 @@ body {
 /* Change icon when light mode is active */
 .light-mode .switch-label::after {
     content: "🌙"; /* Moon icon for dark mode */
+}
+
+.my-work-container {
+    background-color: #032447;
+    padding: 40px;
+    border-radius: 10px;
+    max-width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.project-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-card {
+    background-color: #021f3d;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+}
+
+.project-card img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.project-details h3 {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.github-link {
+    display: inline-block;
+    margin-top: 10px;
+    color: #1ce2e4;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.github-link:hover {
+    text-decoration: underline;
 }
