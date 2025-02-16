@@ -1,23 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
     const navbar = document.querySelector(".navbar");
+    let lastScrollY = window.scrollY;
 
-    // Initially hide the navbar
-    navbar.style.transform = "translateY(-100%)";
-    navbar.style.transition = "transform 0.5s ease-in-out";
+    // Ensure navbar is positioned statically at the top
+    navbar.style.position = "fixed";
+    navbar.style.width = "100%";
+    navbar.style.top = "0";
+    navbar.style.transition = "top 0.4s ease-in-out";
 
-    // Show navbar when hovering near the top of the page
-    document.addEventListener("mousemove", (event) => {
-        if (event.clientY < 50) {
-            navbar.style.transform = "translateY(0)";
+    window.addEventListener("scroll", () => {
+        if (window.scrollY < 50 || window.scrollY < lastScrollY) {
+            // Show navbar when at the top or scrolling up
+            navbar.style.top = "0";
         } else {
-            navbar.style.transform = "translateY(-100%)";
+            // Hide navbar when scrolling down
+            navbar.style.top = "-80px"; // Adjust based on navbar height
         }
+        lastScrollY = window.scrollY;
     });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-    // Select all containers inside the About page and Projects section
-    const containers = document.querySelectorAll(".about-container, .project-container");
+    // Select all relevant containers
+    const containers = document.querySelectorAll(".about-container, .project-container, .my-work-container");
 
     // Add pop-out effect to each container
     containers.forEach((container, index) => {
@@ -47,4 +52,3 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-
