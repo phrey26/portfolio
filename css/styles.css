@@ -355,3 +355,37 @@ body {
 .github-link:hover {
     text-decoration: underline;
 }
+
+.skills-section {
+    margin-top: 30px;
+}
+
+.skills-section h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.skills-section ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.skills-section li {
+    background-color: #021f3d;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin: 10px;
+    text-align: center;
+    flex: 1 0 200px; /* Adjust width as needed */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.skills-section strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #1ce2e4;
+}
